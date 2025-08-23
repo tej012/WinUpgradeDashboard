@@ -9,9 +9,9 @@ from PIL import Image
 # =========================
 import streamlit as st
 
-col1, col2 = st.columns([1,4])
+col1, col2 = st.columns([3,4])
 with col1:
-    st.image("kyndryl_logo.png", width=100)  # Adjust size
+    st.image("kyndryl_logo.png", width=130)  # Adjust size
 
 
 st.set_page_config(
@@ -436,3 +436,4 @@ st.markdown("""
         © 2025 Kyndryl | Windows Upgrade Monitoring Dashboard
     </div>
 """, unsafe_allow_html=True)
+
