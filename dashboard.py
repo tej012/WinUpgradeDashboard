@@ -409,24 +409,24 @@ with col_wsus2:
 # =========================
 # Filtered Table
 # =========================
-st.markdown("---")
-st.subheader("📋 Filtered Asset Records")
-
-show_cols = [
-    "Asset ID", "Operating System", "WSUS Status", "LastLogonDate",
-    "Owner ID", "Impact Level", "Email", "Custodian ID", "CI Type",
-    "Location", "Hardware Status", "Support group", "Company", "Asset Criteria"
-]
-
-st.dataframe(filtered[show_cols])
-
-st.download_button(
-    label="📥 Download Filtered Data",
-    data=filtered[show_cols].to_csv(index=False).encode("utf-8"),
-    file_name="Filtered_Assets.csv",
-    mime="text/csv"
-)
-
+#st.markdown("---")
+#st.subheader("📋 Filtered Asset Records")
+#
+#show_cols = [
+#    "Asset ID", "Operating System", "WSUS Status", "LastLogonDate",
+#    "Owner ID", "Impact Level", "Email", "Custodian ID", "CI Type",
+#    "Location", "Hardware Status", "Support group", "Company", "Asset Criteria"
+#]
+#
+#st.dataframe(filtered[show_cols])
+#
+#st.download_button(
+#    label="📥 Download Filtered Data",
+#    data=filtered[show_cols].to_csv(index=False).encode("utf-8"),
+#    file_name="Filtered_Assets.csv",
+#    mime="text/csv"
+#)
+#
 # =========================
 # Footer
 # =========================
