@@ -77,14 +77,14 @@ merged = cmdb_data.merge(
 
 # Rename overlapping columns
 merged = merged.rename(columns={
-    "Status": "WSUS Status",
+    "Status": "CU Status",
     "Status(Hardware Status)": "Hardware Status",
     "OperatingSystem": "Operating System"
 })
 
 # Replace NaN values
 merged = merged.fillna({
-    "WSUS Status": "Not Reporting",
+    "CU Status": "Not Reporting",
     "Hardware Status": "Not Found",
     "Operating System": "Not Found",
     "LastLogonDate": "Not Found"
@@ -209,9 +209,9 @@ if company_filter:
 if support_group_filter:
     filtered = filtered[filtered["Support group"].isin(support_group_filter)]
 
-# Clean WSUS Status
-filtered["WSUS Status"] = (
-    filtered["WSUS Status"]
+# Clean CU Status
+filtered["CU Status"] = (
+    filtered["CU Status"]
     .astype(str)
     .str.strip()
     .str.title()
@@ -323,7 +323,7 @@ st.markdown("---")
 #st.bar_chart(os_counts)
 
 # =========================
-# WSUS Status for Non-Compliant Devices
+# CU Status for Non-Compliant Devices
 # =========================
 st.subheader("⚠️ Centeral Update Status for Win10 Live Devices")
 
@@ -336,14 +336,14 @@ wsus_nc = non_compliant[
 col_wsus1, col_wsus2 = st.columns([4, 2])  # Left: KPIs, Right: Donut Chart
 
 with col_wsus1:
-    # KPIs for WSUS Status
-    installed = (wsus_nc["WSUS Status"] == "Installed").sum()
-    not_installed = (wsus_nc["WSUS Status"] == "Not Installed").sum()
-    downloaded = (wsus_nc["WSUS Status"] == "Downloaded").sum()
-    failed = (wsus_nc["WSUS Status"] == "Failed").sum()
-    not_applicable = (wsus_nc["WSUS Status"] == "Not Applicable").sum()
-    not_found = (wsus_nc["WSUS Status"] == "Not Reporting").sum()
-    no_status = (wsus_nc["WSUS Status"]== "No Status").sum()
+    # KPIs for CU Status
+    installed = (wsus_nc["CU Status"] == "Installed").sum()
+    not_installed = (wsus_nc["CU Status"] == "Not Installed").sum()
+    downloaded = (wsus_nc["CU Status"] == "Downloaded").sum()
+    failed = (wsus_nc["CU Status"] == "Failed").sum()
+    not_applicable = (wsus_nc["CU Status"] == "Not Applicable").sum()
+    not_found = (wsus_nc["CU Status"] == "Not Reporting").sum()
+    no_status = (wsus_nc["CU Status"]== "No Status").sum()
 
     k3, k4, k5 = st.columns(3)
 
@@ -379,21 +379,21 @@ with col_wsus1:
 #        st.metric("Not Reporting", not_found)
 
 with col_wsus2:
-    # Donut Chart for WSUS Status
-    wsus_counts = wsus_nc["WSUS Status"].value_counts().reset_index()
-    wsus_counts.columns = ["WSUS Status", "Count"]
+    # Donut Chart for CU Status
+    wsus_counts = wsus_nc["CU Status"].value_counts().reset_index()
+    wsus_counts.columns = ["CU Status", "Count"]
 
     if not wsus_counts.empty:
         fig_wsus_nc = px.pie(
             wsus_counts,
-            names="WSUS Status",
+            names="CU Status",
             values="Count",
             hole=0.4
         )
         fig_wsus_nc.update_traces(textinfo="percent+label")
         st.plotly_chart(fig_wsus_nc, use_container_width=True)
     else:
-        st.info("No WSUS status data available for non-compliant live devices.")
+        st.info("No CU status data available for non-compliant live devices.")
 
 
 # =========================
@@ -403,7 +403,7 @@ st.markdown("---")
 st.subheader("📋 Filtered Asset Records")
 
 show_cols = [
-    "Asset ID", "Operating System", "WSUS Status", "LastLogonDate",
+    "Asset ID", "Operating System", "CU Status", "LastLogonDate",
     "Owner ID", "Impact Level", "Email", "Custodian ID", "CI Type",
     "Location", "Hardware Status", "Support group", "Company", "Asset Criteria"
 ]
@@ -426,6 +426,7 @@ st.markdown("""
         © 2025 Kyndryl | Windows Upgrade Monitoring Dashboard
     </div>
 """, unsafe_allow_html=True)
+
 
 
 
