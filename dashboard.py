@@ -325,7 +325,7 @@ st.markdown("---")
 # =========================
 # WSUS Status for Non-Compliant Devices
 # =========================
-st.subheader("⚠️ WSUS Status for Win10 Live Devices")
+st.subheader("⚠️ Centeral Update Status for Win10 Live Devices")
 
 # Filter WSUS data for non-compliant live devices
 wsus_nc = non_compliant[
@@ -426,6 +426,7 @@ st.markdown("""
         © 2025 Kyndryl | Windows Upgrade Monitoring Dashboard
     </div>
 """, unsafe_allow_html=True)
+
 
 
 
