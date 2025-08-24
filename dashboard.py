@@ -12,7 +12,12 @@ import streamlit as st
 col1, col2 = st.columns([3,4])
 with col1:
     st.image("kyndryl_logo.png", width=130)  # Adjust size
-
+# Load logo
+try:
+    logo = Image.open("tata_favicon.png")
+    st.image(logo, width=180)
+except:
+    st.title("💻 Windows Upgrade Complince Dashboard")
 
 st.set_page_config(
     page_title="💻 Windows Upgrade Dashboard",
@@ -426,6 +431,7 @@ st.markdown("""
         © 2025 Kyndryl | Windows Upgrade Monitoring Dashboard
     </div>
 """, unsafe_allow_html=True)
+
 
 
 
