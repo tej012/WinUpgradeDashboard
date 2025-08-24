@@ -15,20 +15,10 @@ with col1:
 
 
 st.set_page_config(
-    page_title="💻 TATA Steel Windows Upgrade Dashboard",
-    page_icon="tata_favicon.png",  # optional favicon file
+    page_title="💻 Windows Upgrade Dashboard",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
-
-# Load logo
-try:
-    logo = Image.open("tata_steel_logo.png")
-    st.image(logo, width=180)
-except:
-    st.title("💻 TATA Steel Windows Upgrade Activity Dashboard")
-
-#st.markdown("<h2 style='color:#005baa;'>Windows Upgrade Activity Dashboard</h2>", unsafe_allow_html=True)
 
 # =========================
 # Custom CSS for Corporate Look
@@ -436,5 +426,6 @@ st.markdown("""
         © 2025 Kyndryl | Windows Upgrade Monitoring Dashboard
     </div>
 """, unsafe_allow_html=True)
+
 
 
